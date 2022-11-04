@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/hotels"
+        android:gravity="center"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -13,7 +19,8 @@
         android:layout_height="wrap_content"
         app:tabMode="fixed"
         app:tabGravity="fill"
-        app:tabTextAppearance="@style/TabLayoutStyle">
+        app:tabTextAppearance="@style/TabLayoutStyle"
+        android:layout_below="@+id/toolbar">
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2

@@ -18,7 +18,8 @@
             android:name=".activity_hotels"
             android:label="@string/hotels"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
