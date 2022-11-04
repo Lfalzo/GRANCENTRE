@@ -3,12 +3,21 @@ package com.example.proyectoandroid.hotels;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.proyectoandroid.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,6 +64,22 @@ public class unaEstrella extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        String data = "hola";
+
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(data);
+            JSONArray jsonArray = jsonObject.getJSONArray("hotels");
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // cridar el json i agafar nomes les dades dels X estrelles al array
+        // utilitzar aquest array per mostrar un cardview per cada un dels hotels
+        // crear links
     }
 
     @Override
