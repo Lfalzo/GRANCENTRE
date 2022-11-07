@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/PROYECTOS/GRANCENTRE/app/src/main/res/layout/activity_hotels.xml" value="0.12360688956433637" />
         <entry key="..\:/PROYECTOS/GRANCENTRE/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/PROYECTOS/GRANCENTRE/app/src/main/res/layout/activity_negocios.xml" value="0.8" />
+        <entry key="..\:/PROYECTOS/GRANCENTRE/app/src/main/res/layout/activity_transportes.xml" value="0.12360688956433637" />
+        <entry key="..\:/PROYECTOS/GRANCENTRE/app/src/main/res/layout/fragment_una_estrella.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/activity_hotels.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
       </map>
