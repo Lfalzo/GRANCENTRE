@@ -14,11 +14,23 @@
         android:theme="@style/Theme.ProyectoANDROID"
         tools:targetApi="31">
         <activity
-            android:name=".hotels"
+            android:name=".cartelera"
             android:exported="false" />
         <activity
+            android:name=".hotels.popup_hotel"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity
+            android:name=".activity_hotels"
+            android:exported="false"
+            android:label="@string/hotels"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

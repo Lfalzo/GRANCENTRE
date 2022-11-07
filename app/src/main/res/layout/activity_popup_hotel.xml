@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="mom"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="direccio"/>
+    <TextView
+        android:id="@+id/descriptionPopUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Estaremos encantados de ayudarte, puedes contactarnos a través de los siguientes canales:"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        >
+        <ImageButton
+            android:id="@+id/call"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/llamada"/>
+        <ImageButton
+            android:id="@+id/email"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/correo"
+            android:layout_marginHorizontal="25px"/>
+        <ImageButton
+            android:id="@+id/website"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/sitioweb"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</LinearLayout>
