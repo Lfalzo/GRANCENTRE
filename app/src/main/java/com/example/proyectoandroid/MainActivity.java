@@ -16,13 +16,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageView hotels = findViewById(R.id.gchotel);
+        ImageButton hotels = findViewById(R.id.gchotel);
         hotels.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        ImageView b = (ImageView) view;
+        ImageButton b = (ImageButton) view;
 
         if (b.getId() == R.id.gchotel)
         {
