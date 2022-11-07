@@ -7,12 +7,12 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:backgroundTint="@color/black"
-    android:layout_gravity="center">
+    android:gravity="center_vertical">
 
     <ImageView
         android:id="@+id/gclogo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
         android:background="@drawable/gclogo"
         android:layout_centerHorizontal="true"/>
 
@@ -167,6 +167,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/ctransporte"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="20dp"
@@ -195,20 +196,34 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
-    <ImageButton
-        android:id="@+id/gcconfig"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/configuracion"/>
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ajustes"
-        android:layout_below="@+id/gcconfig"
-        android:layout_alignStart="@id/gcconfig"/>
-
+        android:elevation="20dp"
+        android:layout_below="@+id/ctransporte"
+        android:layout_margin="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_centerHorizontal="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/tconfig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Configuración"
+                android:layout_centerVertical="true"
+                android:textSize="25dp" />
+            <ImageButton
+                android:id="@+id/gcconfig"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/configuracion"
+                android:layout_toRightOf="@id/tconfig"
+                android:layout_marginLeft="50dp"
+                android:layout_marginVertical="10dp"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
