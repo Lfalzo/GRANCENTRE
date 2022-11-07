@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -14,15 +16,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button hotels = findViewById(R.id.hotels);
+        ImageView hotels = findViewById(R.id.gchotel);
         hotels.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        Button b = (Button) view;
+        ImageView b = (ImageView) view;
 
-        if (b.getId() == R.id.hotels)
+        if (b.getId() == R.id.gchotel)
         {
             Intent hotels =new Intent(this, activity_hotels.class);
 

@@ -5,12 +5,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:backgroundTint="@color/black">
 
     <Button
-    android:id="@+id/hotels"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="hotels"/>
+        android:id="@+id/hotels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hotels"/>
+    <ImageView
+        android:id="@+id/gclogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gclogo"
+        />
+    <ImageView
+        android:id="@+id/gcrest"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/cena"
+        android:layout_below="@+id/gclogo"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"/>
+    <ImageView
+        android:id="@+id/gcfinanzas"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/finanzas"
+        android:layout_below="@id/gcrest"
+        android:layout_marginTop="20dp"/>
+    <ImageView
+        android:id="@+id/gchotel"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/hotel"
+        android:layout_below="@id/gcfinanzas"
+        android:layout_marginTop="20dp"/>
+    <ImageView
+        android:id="@+id/gccine"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/cine"
+        android:layout_below="@id/gchotel"
+        android:layout_marginTop="20dp"/>
+    <ImageView
+        android:id="@+id/gcparking"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/estacionamiento"
+        android:layout_below="@id/gchotel"
+        android:layout_marginTop="20dp"/>
+    <ImageView
+        android:id="@+id/gctransporte"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/transporte"
+        android:layout_below="@id/gcparking"
+        android:layout_marginTop="20dp"/>
+    <ImageView
+        android:id="@+id/gcconfig"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/configuracion"
+        android:layout_alignParentEnd="true"/>
+
 
 </RelativeLayout>
