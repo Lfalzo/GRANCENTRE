@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.example.proyectoandroid.cartelera.cartelera;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
 
@@ -16,19 +18,61 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageButton hotels = findViewById(R.id.gchotel);
-        hotels.setOnClickListener(this);
+
+        ImageButton restaurantes = findViewById(R.id.gcrest);
+        restaurantes.setOnClickListener(this);
+        ImageButton finanzas = findViewById(R.id.gcfinanzas);
+        finanzas.setOnClickListener(this);
+        ImageButton hoteles = findViewById(R.id.gchotel);
+        hoteles.setOnClickListener(this);
+        ImageButton cartelera = findViewById(R.id.gccine);
+        cartelera.setOnClickListener(this);
+        ImageButton parking = findViewById(R.id.gcparking);
+        parking.setOnClickListener(this);
+        ImageButton transporte = findViewById(R.id.gctransporte);
+        transporte.setOnClickListener(this);
+        ImageButton config = findViewById(R.id.gcconfig);
+        config.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         ImageButton b = (ImageButton) view;
 
-        if (b.getId() == R.id.gchotel)
+        if (b.getId() == R.id.gcrest)
+        {
+            Intent rest =new Intent(this, activity_hotels.class);
+            startActivity(rest);
+        }
+        else if (b.getId() == R.id.gcfinanzas)
+        {
+            Intent finanzas =new Intent(this, activity_hotels.class);
+            startActivity(finanzas);
+        }
+        else if (b.getId() == R.id.gchotel)
         {
             Intent hotels =new Intent(this, activity_hotels.class);
-
             startActivity(hotels);
+        }
+        else if (b.getId() == R.id.gccine)
+        {
+            Intent cartelera =new Intent(this, com.example.proyectoandroid.cartelera.cartelera.class);
+            startActivity(cartelera);
+        }
+        else if (b.getId() == R.id.gcparking)
+        {
+            Intent parking =new Intent(this, activity_hotels.class);
+            startActivity(parking);
+        }
+        else if (b.getId() == R.id.gctransporte)
+        {
+            Intent transporte =new Intent(this, activity_hotels.class);
+            startActivity(transporte);
+        }
+        else if (b.getId() == R.id.gcconfig)
+        {
+            Intent config =new Intent(this, activity_hotels.class);
+            startActivity(config);
         }
     }
 }
