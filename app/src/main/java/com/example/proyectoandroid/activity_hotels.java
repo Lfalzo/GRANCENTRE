@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toolbar;
 
 import com.example.proyectoandroid.hotels.cincEstrelles;
@@ -15,7 +18,7 @@ import com.example.proyectoandroid.hotels.unaEstrella;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class activity_hotels extends AppCompatActivity {
+public class activity_hotels extends AppCompatActivity implements View.OnClickListener {
 
     ViewPagerAdapter adapter;
     ViewPager2 viewPager2;
@@ -26,6 +29,9 @@ public class activity_hotels extends AppCompatActivity {
 
         viewPager2 = findViewById(R.id.viewPager2);
         adapter = new ViewPagerAdapter(getSupportFragmentManager(),getLifecycle());
+
+        ImageButton backbt = findViewById(R.id.back);
+        backbt.setOnClickListener(this);
 
         //Afegir fragments
         adapter.addFragment(new unaEstrella());
@@ -51,5 +57,20 @@ public class activity_hotels extends AppCompatActivity {
                 }
             }
         }).attach();
+    }
+
+    @Override
+    public void onClick(View view) {
+        ImageButton bt = (ImageButton) view;
+
+        if (bt.getId() == R.id.menu)
+        {
+
+        }
+        if (bt.getId() == R.id.back)
+        {
+            Intent back = new Intent(this, MainActivity.class);
+            startActivity(back);
+        }
     }
 }
