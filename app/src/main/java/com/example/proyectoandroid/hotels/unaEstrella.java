@@ -21,7 +21,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.proyectoandroid.R;
 import com.example.proyectoandroid.activity_hotels;
 
@@ -29,7 +36,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -39,6 +49,7 @@ import java.util.ArrayList;
  */
 public class unaEstrella extends Fragment implements View.OnClickListener{
 
+    private List<hotelData> data = new ArrayList<hotelData>() ;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -79,30 +90,59 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        JSONObject jsonObject = null;
-        /*try {
-            jsonObject = new JSONObject(data);
-            JSONArray jsonArray = jsonObject.getJSONArray("hotels");
-            for (int i = 0; i < jsonArray.length(); i++) {
-            //parsejar a objecte
-                name
-                descripction
-                img1
-                img2
-                direction
-                tel
-                email
-                url
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
-
+        readJSON();
         // cridar el json i agafar nomes les dades dels X estrelles al array
         // utilitzar aquest array per mostrar un cardview per cada un dels hotels
         // crear links
+
     }
+
+    public void readJSON(){
+        String jsonString = loadJSONFromAsset();
+        try {
+            JSONArray hotelData = new JSONArray(jsonString);
+            String result = "";
+            for (int i=0;i< hotelData.length(); i++)
+            {
+                JSONObject h = hotelData.getJSONObject(i);
+                if (h.getInt("estrellas")==1) {
+                    hotelData hotel = new hotelData(
+                    h.getString("nombre"),
+                    h.getInt("estrellas"),
+                    h.getString("descripcion"),
+                    h.getString("imatge"),
+                    h.getString("imatge2"),
+                    h.getString("direccion"),
+                    h.getString("telefono"),
+                    h.getString("email"),
+                    h.getInt("valoracion"),
+                    h.getString("website"));
+
+                    //make an array with the classes hotelData
+                    data.add(hotel);
+                };
+            }
+            } catch (JSONException jsonException) {
+            jsonException.printStackTrace();
+        }
+    }
+
+    private String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getActivity().getAssets().open("hotels.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

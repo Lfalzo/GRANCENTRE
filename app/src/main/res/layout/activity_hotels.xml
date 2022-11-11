@@ -24,12 +24,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hotels"
-            style="@style/TitleHotel" />
-        <ImageButton
-            android:id="@+id/menu"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/barramenu"/>
+            style="@style/TitleHotel"/>
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/barramenu"/>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -48,5 +48,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tabLayout" />
+
 
     </RelativeLayout>

@@ -13,7 +13,6 @@ import com.example.proyectoandroid.cartelera.cartelera;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

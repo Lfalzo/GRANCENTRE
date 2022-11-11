@@ -3,4 +3,14 @@
     <string name="hotels">Hotels</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="JSONurl"></string>
+    <string-array name="gcmenuoptions">
+        <item>Restaurantes</item>
+        <item>Finanzas</item>
+        <item>Hoteles</item>
+        <item>Cartelera</item>
+        <item>Parking</item>
+        <item>Transporte</item>
+        <item>Configuración</item>
+    </string-array>
 </resources>
