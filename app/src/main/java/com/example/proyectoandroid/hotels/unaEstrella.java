@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.DisplayMetrics;
@@ -48,8 +49,10 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class unaEstrella extends Fragment implements View.OnClickListener{
+    private RecyclerView recyclerView;
+    private cardadapter adapter;
 
-    private List<hotelData> data = new ArrayList<hotelData>() ;
+    private List<hotelData> dataHotels = new ArrayList<hotelData>() ;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -84,13 +87,10 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Button detalls = (R.id.detalls1);
-        //detalls.setOnClickListener(this);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        readJSON();
         // cridar el json i agafar nomes les dades dels X estrelles al array
         // utilitzar aquest array per mostrar un cardview per cada un dels hotels
         // crear links
@@ -100,11 +100,11 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
     public void readJSON(){
         String jsonString = loadJSONFromAsset();
         try {
-            JSONArray hotelData = new JSONArray(jsonString);
+            JSONArray data = new JSONArray(jsonString);
             String result = "";
-            for (int i=0;i< hotelData.length(); i++)
+            for (int i=0;i< data.length(); i++)
             {
-                JSONObject h = hotelData.getJSONObject(i);
+                JSONObject h = data.getJSONObject(i);
                 if (h.getInt("estrellas")==1) {
                     hotelData hotel = new hotelData(
                     h.getString("nombre"),
@@ -119,12 +119,13 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
                     h.getString("website"));
 
                     //make an array with the classes hotelData
-                    data.add(hotel);
+                    dataHotels.add(hotel);
                 };
-            }
+            };
             } catch (JSONException jsonException) {
             jsonException.printStackTrace();
         }
+
     }
 
     private String loadJSONFromAsset() {
@@ -148,15 +149,27 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //ImageView imageView = (ImageView) getView().findViewById(R.id.hotels_view);
-        return inflater.inflate(R.layout.fragment_una_estrella, container, false);
+        View view = inflater.inflate(R.layout.fragment_una_estrella, container, false);
+
+        recyclerView = view.findViewById(R.id.hotelsList);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+
+        readJSON();
+
+        adapter = new cardadapter(dataHotels);
+
+        Button detalls = view.findViewById(R.id.hoteldetails);
+        detalls.setOnClickListener(this);
+
+        return view;
     }
 
     @Override
     public void onClick(View view) {
         Button bt = (Button) view;
 
-        if (bt.getId() == R.id.detalls1){
+        if (bt.getId() == R.id.hoteldetails){
             //s'hauran de passar els parametres del JSON
             Intent popup =new Intent(getActivity().getApplicationContext(), popup_hotel.class);
 

@@ -21,7 +21,7 @@ public class popup_hotel extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*setContentView(R.layout.activity_popup_hotel);
+        setContentView(R.layout.activity_popup_hotel);
 
         ImageButton call= findViewById(R.id.call);
         call.setOnClickListener(this);
@@ -30,7 +30,7 @@ public class popup_hotel extends AppCompatActivity implements View.OnClickListen
         call.setOnClickListener(this);
 
         ImageButton website = findViewById(R.id.website);
-        call.setOnClickListener(this);*/
+        call.setOnClickListener(this);
     }
 
     @Override

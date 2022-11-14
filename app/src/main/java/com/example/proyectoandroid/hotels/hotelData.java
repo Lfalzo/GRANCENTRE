@@ -18,11 +18,11 @@ public class hotelData {
     private String direccion;
     private String telefono;
     private String email;
-    private Float valoracion;
+    private Integer valoracion;
     private String website;
 
     public hotelData(String nombre,int estrellas,String descripcion,String imatge, String imatge2,String direccion
-    ,String telefono,String email, float valoracion,String website) {
+    ,String telefono,String email, int valoracion,String website) {
         this.nombre = nombre;
         this.estrellas = estrellas;
         this.descripcion = descripcion;
@@ -84,11 +84,11 @@ public class hotelData {
         this.email = email;
     }
 
-    public Float getValoracion() {
+    public int getValoracion() {
         return valoracion;
     }
 
-    public void setValoracion(Float valoracion) {
+    public void setValoracion(int valoracion) {
         this.valoracion = valoracion;
     }
 

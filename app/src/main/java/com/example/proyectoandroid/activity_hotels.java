@@ -87,7 +87,6 @@ public class activity_hotels extends AppCompatActivity implements View.OnClickLi
         switch(i) {
             case 1: {
                 intent = new Intent(activity_hotels.this, cartelera.class);
-
             }
             break;
             case 2: {
