@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ImageButton restaurantes = findViewById(R.id.gcrest);
         restaurantes.setOnClickListener(this);
-        ImageButton finanzas = findViewById(R.id.gcfinanzas);
-        finanzas.setOnClickListener(this);
+        ImageButton negocios = findViewById(R.id.gcnegocios);
+        negocios.setOnClickListener(this);
         //ImageButton hoteles = findViewById(R.id.gchotel);
         //hoteles.setOnClickListener(this);
         ImageButton cartelera = findViewById(R.id.gccine);
