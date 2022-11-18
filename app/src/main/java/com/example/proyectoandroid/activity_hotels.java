@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,10 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.example.proyectoandroid.cartelera.cartelera;
 import com.example.proyectoandroid.hotels.cincEstrelles;
 import com.example.proyectoandroid.hotels.duesEstrelles;
 import com.example.proyectoandroid.hotels.quatreEstrelles;
@@ -23,8 +19,6 @@ import com.example.proyectoandroid.hotels.tresEstrelles;
 import com.example.proyectoandroid.hotels.unaEstrella;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import org.json.JSONObject;
 
 public class activity_hotels extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -86,11 +80,11 @@ public class activity_hotels extends AppCompatActivity implements View.OnClickLi
     final Intent intent;
         switch(i) {
             case 1: {
-                intent = new Intent(activity_hotels.this, cartelera.class);
+                intent = new Intent(activity_hotels.this, activity_cartelera.class);
             }
             break;
             case 2: {
-                intent = new Intent(activity_hotels.this, cartelera.class);
+                intent = new Intent(activity_hotels.this, activity_cartelera.class);
             }
             break;
             case 3: {
@@ -98,19 +92,19 @@ public class activity_hotels extends AppCompatActivity implements View.OnClickLi
             }
             break;
             case 4: {
-                intent = new Intent(activity_hotels.this, cartelera.class);
+                intent = new Intent(activity_hotels.this, activity_cartelera.class);
             }
             break;
             case 5: {
-                intent = new Intent(activity_hotels.this, cartelera.class);
+                intent = new Intent(activity_hotels.this, activity_cartelera.class);
             }
             break;
             case 6: {
-                intent = new Intent(activity_hotels.this, cartelera.class);
+                intent = new Intent(activity_hotels.this, activity_cartelera.class);
             }
             break;
             case 7: {
-                intent = new Intent(activity_hotels.this, cartelera.class);
+                intent = new Intent(activity_hotels.this, activity_cartelera.class);
             }
             break;
             default:

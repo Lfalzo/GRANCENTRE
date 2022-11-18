@@ -6,11 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-
-import com.example.proyectoandroid.cartelera.cartelera;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -50,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if (b.getId() == R.id.gcfinanzas)
         {
-            Intent finanzas =new Intent(this, activity_hotels.class);
+            Intent finanzas =new Intent(this, activity_negocios.class);
             startActivity(finanzas);
         }
         else if (c.getId() == R.id.chotel)
@@ -60,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if (b.getId() == R.id.gccine)
         {
-            Intent cartelera =new Intent(this, com.example.proyectoandroid.cartelera.cartelera.class);
+            Intent cartelera =new Intent(this, activity_cartelera.class);
             startActivity(cartelera);
         }
         else if (b.getId() == R.id.gcparking)
@@ -70,12 +66,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if (b.getId() == R.id.gctransporte)
         {
-            Intent transporte =new Intent(this, activity_hotels.class);
+            Intent transporte =new Intent(this, activity_transportes.class);
             startActivity(transporte);
         }
         else if (b.getId() == R.id.gcconfig)
         {
-            Intent config =new Intent(this, activity_hotels.class);
+            Intent config =new Intent(this, config.class);
             startActivity(config);
         }
     }

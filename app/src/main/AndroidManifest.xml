@@ -18,7 +18,7 @@
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".cartelera"
+            android:name=".activity_cartelera"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity

@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/PROYECTOS/GRANCENTRE/app/src/main/res/layout/activity_hotels.xml" value="0.12360688956433637" />
-        <entry key="..\:/PROYECTOS/GRANCENTRE/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/PROYECTOS/GRANCENTRE/app/src/main/res/layout/activity_negocios.xml" value="0.8" />
-        <entry key="..\:/PROYECTOS/GRANCENTRE/app/src/main/res/layout/activity_transportes.xml" value="0.12360688956433637" />
-        <entry key="..\:/PROYECTOS/GRANCENTRE/app/src/main/res/layout/fragment_una_estrella.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/drawable/ic_unaestrella_background.xml" value="0.196" />
+        <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/activity_cartelera.xml" value="0.1699074074074074" />
+        <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/activity_config.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/activity_hotels.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/activity_negocios.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/activity_popup_hotel.xml" value="0.10046296296296296" />
+        <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/fragment_una_estrella.xml" value="0.1708542713567839" />
+        <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/hotel.xml" value="0.19027777777777777" />
+        <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/layout/popup_hotels.xml" value="0.1" />
+        <entry key="..\:/Users/usuario/Desktop/M8/Practiques/GRANCENTRE/app/src/main/res/mipmap-anydpi-v26/ic_unaestrella.xml" value="0.199" />
       </map>
     </option>
   </component>

@@ -1,4 +1,4 @@
-package com.example.proyectoandroid.cartelera;
+package com.example.proyectoandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.proyectoandroid.R;
 
-public class cartelera extends AppCompatActivity {
+public class activity_cartelera extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
