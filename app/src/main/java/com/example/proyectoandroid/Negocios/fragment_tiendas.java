@@ -36,7 +36,7 @@ public class fragment_tiendas extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_tiendas.
+     * @return A new instance of fragment fragment_tiendas1.
      */
     // TODO: Rename and change types and number of parameters
     public static fragment_tiendas newInstance(String param1, String param2) {
@@ -62,5 +62,6 @@ public class fragment_tiendas extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tiendas, container, false);
+        // declararlo en una sola variable y antes de eso podemos
     }
 }

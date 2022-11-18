@@ -16,6 +16,11 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
         super(fragmentManager, lifecycle);
     }
 
+    public ViewPagerAdapter(activity_negocios activity_negocios) {
+        super(activity_negocios);
+    }
+
+
     @NonNull
     @Override
     public Fragment createFragment(int position){
