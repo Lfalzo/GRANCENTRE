@@ -1,6 +1,7 @@
 package com.example.proyectoandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,12 +19,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        CardView cardhotel = findViewById(R.id.chotel);
+        cardhotel.setOnClickListener(this);
+
         ImageButton restaurantes = findViewById(R.id.gcrest);
         restaurantes.setOnClickListener(this);
         ImageButton finanzas = findViewById(R.id.gcfinanzas);
         finanzas.setOnClickListener(this);
-        ImageButton hoteles = findViewById(R.id.gchotel);
-        hoteles.setOnClickListener(this);
+        //ImageButton hoteles = findViewById(R.id.gchotel);
+        //hoteles.setOnClickListener(this);
         ImageButton cartelera = findViewById(R.id.gccine);
         cartelera.setOnClickListener(this);
         ImageButton parking = findViewById(R.id.gcparking);
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         ImageButton b = (ImageButton) view;
+        CardView c = (CardView) view;
 
         if (b.getId() == R.id.gcrest)
         {
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent finanzas =new Intent(this, activity_hotels.class);
             startActivity(finanzas);
         }
-        else if (b.getId() == R.id.gchotel)
+        else if (c.getId() == R.id.chotel)
         {
             Intent hotels =new Intent(this, activity_hotels.class);
             startActivity(hotels);

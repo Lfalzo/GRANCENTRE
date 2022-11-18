@@ -22,23 +22,27 @@ import java.util.List;
 
 public class cardadapter extends RecyclerView.Adapter<cardadapter.ViewHolder> {
     private Context hotelContext;
-    private ArrayList<hotelData> hotelDataList;
+    private List<hotelData> hotelDataList;
 
-    public cardadapter (Context context, ArrayList<hotelData> list) {
-        hotelContext = context;
-        hotelDataList = list;
+    public cardadapter (ArrayList<hotelData> list) {
+        this.hotelDataList = list;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(hotelContext).inflate(R.layout.hotelcard,parent,false);
-        return new ViewHolder(v);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.hotelcard,parent,false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         hotelData actual = hotelDataList.get(position);
+        holder.hname.setText(actual.getNombre());
+        //holder.himage.setImageResource();
+        holder.hdescription.setText(actual.getDescripcion());
+        holder.hrating.setRating(actual.getValoracion());
+        //falta el click del details
         new unaEstrella();
     }
 

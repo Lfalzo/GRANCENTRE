@@ -1,8 +1,5 @@
 package com.example.proyectoandroid.hotels;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
-
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,28 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.proyectoandroid.R;
-import com.example.proyectoandroid.activity_hotels;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,10 +30,10 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class unaEstrella extends Fragment implements View.OnClickListener{
-    private RecyclerView recyclerView;
+    private RecyclerView hlista;
     private cardadapter adapter;
+    private List<hotelData> dataHotels = new ArrayList<hotelData>();
 
-    private List<hotelData> dataHotels = new ArrayList<hotelData>() ;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -91,14 +72,11 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        // cridar el json i agafar nomes les dades dels X estrelles al array
-        // utilitzar aquest array per mostrar un cardview per cada un dels hotels
-        // crear links
-
     }
 
     public void readJSON(){
         String jsonString = loadJSONFromAsset();
+
         try {
             JSONArray data = new JSONArray(jsonString);
             String result = "";
@@ -151,16 +129,14 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_una_estrella, container, false);
 
-        recyclerView = view.findViewById(R.id.hotelsList);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-
         readJSON();
 
-        adapter = new cardadapter(dataHotels);
+        hlista = view.findViewById(R.id.hotelsList1);
 
-        Button detalls = view.findViewById(R.id.hoteldetails);
-        detalls.setOnClickListener(this);
+        initValues();
+
+        //Button detalls = view.findViewById(R.id.hoteldetails);
+        //detalls.setOnClickListener(this);
 
         return view;
     }
@@ -177,5 +153,16 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
 
             startActivity(popup);
         }
+    }
+
+    private void initViews (){
+
+    }
+
+    private void initValues(){
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity().getApplicationContext());
+        hlista.setLayoutManager(manager);
+
+        adapter = new cardadapter((ArrayList<hotelData>) dataHotels);
     }
 }
