@@ -15,36 +15,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CardView cardhotel = findViewById(R.id.chotel);
-        cardhotel.setOnClickListener(this);
 
-        ImageButton restaurantes = findViewById(R.id.gcrest);
+
+        CardView restaurantes = findViewById(R.id.crest);
         restaurantes.setOnClickListener(this);
-        ImageButton finanzas = findViewById(R.id.gcfinanzas);
-        finanzas.setOnClickListener(this);
-        //ImageButton hoteles = findViewById(R.id.gchotel);
-        //hoteles.setOnClickListener(this);
-        ImageButton cartelera = findViewById(R.id.gccine);
+        CardView negocios = findViewById(R.id.cfinanzas);
+        negocios.setOnClickListener(this);
+        CardView hoteles = findViewById(R.id.chotel);
+        hoteles.setOnClickListener(this);
+        CardView cartelera = findViewById(R.id.ccine);
         cartelera.setOnClickListener(this);
-        ImageButton parking = findViewById(R.id.gcparking);
+        CardView parking = findViewById(R.id.cparking);
         parking.setOnClickListener(this);
-        ImageButton transporte = findViewById(R.id.gctransporte);
+        CardView transporte = findViewById(R.id.ctransporte);
         transporte.setOnClickListener(this);
-        ImageButton config = findViewById(R.id.gcconfig);
+        CardView config = findViewById(R.id.cconfig);
         config.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        ImageButton b = (ImageButton) view;
         CardView c = (CardView) view;
 
-        if (b.getId() == R.id.gcrest)
+        if (c.getId() == R.id.gcrest)
         {
             Intent rest =new Intent(this, activity_hotels.class);
             startActivity(rest);
         }
-        else if (b.getId() == R.id.gcnegocios)
+        else if (c.getId() == R.id.gcnegocios)
         {
             Intent negocios =new Intent(this, activity_negocios.class);
             startActivity(negocios);
@@ -54,22 +52,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent hotels =new Intent(this, activity_hotels.class);
             startActivity(hotels);
         }
-        else if (b.getId() == R.id.gccine)
+        else if (c.getId() == R.id.gccine)
         {
             Intent cartelera =new Intent(this, activity_cartelera.class);
             startActivity(cartelera);
         }
-        else if (b.getId() == R.id.gcparking)
+        else if (c.getId() == R.id.gcparking)
         {
             Intent parking =new Intent(this, activity_hotels.class);
             startActivity(parking);
         }
-        else if (b.getId() == R.id.gctransporte)
+        else if (c.getId() == R.id.gctransporte)
         {
             Intent transporte =new Intent(this, activity_transportes.class);
             startActivity(transporte);
         }
-        else if (b.getId() == R.id.gcconfig)
+        else if (c.getId() == R.id.gcconfig)
         {
             Intent config =new Intent(this, config.class);
             startActivity(config);
