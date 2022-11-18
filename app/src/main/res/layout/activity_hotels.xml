@@ -17,11 +17,10 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="fixed"
+        android:layout_below="@+id/toolbar"
         app:tabGravity="fill"
-        app:tabTextAppearance="@style/TabLayoutStyle"
-        android:layout_below="@+id/toolbar">
-    </com.google.android.material.tabs.TabLayout>
+        app:tabMode="fixed"
+        app:tabTextAppearance="@style/TabLayoutStyle"></com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager2"
