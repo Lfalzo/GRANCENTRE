@@ -9,4 +9,8 @@
         <item name="android:textStyle">bold|italic</item>
         <item name="android:textAllCaps">true</item>
     </style>
+    <style name="Dialogs">
+        <item name="android:windowActionBar">false</item>
+    </style>
+
 </resources>

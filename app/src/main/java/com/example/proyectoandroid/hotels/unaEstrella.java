@@ -1,35 +1,27 @@
 package com.example.proyectoandroid.hotels;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
-
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 
 import com.example.proyectoandroid.R;
-import com.example.proyectoandroid.activity_hotels;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -38,6 +30,9 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class unaEstrella extends Fragment implements View.OnClickListener{
+    private RecyclerView hlista;
+    private cardadapter adapter;
+    private List<hotelData> dataHotels = new ArrayList<hotelData>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,50 +68,84 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Button detalls = (R.id.detalls1);
-        //detalls.setOnClickListener(this);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        JSONObject jsonObject = null;
-        /*try {
-            jsonObject = new JSONObject(data);
-            JSONArray jsonArray = jsonObject.getJSONArray("hotels");
-            for (int i = 0; i < jsonArray.length(); i++) {
-            //parsejar a objecte
-                name
-                descripction
-                img1
-                img2
-                direction
-                tel
-                email
-                url
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
-
-        // cridar el json i agafar nomes les dades dels X estrelles al array
-        // utilitzar aquest array per mostrar un cardview per cada un dels hotels
-        // crear links
     }
+
+    public void readJSON(){
+        String jsonString = loadJSONFromAsset();
+
+        try {
+            JSONArray data = new JSONArray(jsonString);
+            String result = "";
+            for (int i=0;i< data.length(); i++)
+            {
+                JSONObject h = data.getJSONObject(i);
+                if (h.getInt("estrellas")==1) {
+                    hotelData hotel = new hotelData(
+                    h.getString("nombre"),
+                    h.getInt("estrellas"),
+                    h.getString("descripcion"),
+                    h.getString("imatge"),
+                    h.getString("imatge2"),
+                    h.getString("direccion"),
+                    h.getString("telefono"),
+                    h.getString("email"),
+                    h.getInt("valoracion"),
+                    h.getString("website"));
+
+                    //make an array with the classes hotelData
+                    dataHotels.add(hotel);
+                };
+            };
+            } catch (JSONException jsonException) {
+            jsonException.printStackTrace();
+        }
+
+    }
+
+    private String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getActivity().getAssets().open("hotels.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //ImageView imageView = (ImageView) getView().findViewById(R.id.hotels_view);
-        return inflater.inflate(R.layout.fragment_una_estrella, container, false);
+        View view = inflater.inflate(R.layout.fragment_una_estrella, container, false);
+
+        readJSON();
+
+        hlista = view.findViewById(R.id.hotelsList1);
+
+        initValues();
+
+        //Button detalls = view.findViewById(R.id.hoteldetails);
+        //detalls.setOnClickListener(this);
+
+        return view;
     }
 
     @Override
     public void onClick(View view) {
         Button bt = (Button) view;
 
-        if (bt.getId() == R.id.detalls1){
+        if (bt.getId() == R.id.hoteldetails){
             //s'hauran de passar els parametres del JSON
             Intent popup =new Intent(getActivity().getApplicationContext(), popup_hotel.class);
 
@@ -124,5 +153,16 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
 
             startActivity(popup);
         }
+    }
+
+    private void initViews (){
+
+    }
+
+    private void initValues(){
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity().getApplicationContext());
+        hlista.setLayoutManager(manager);
+
+        adapter = new cardadapter((ArrayList<hotelData>) dataHotels);
     }
 }
