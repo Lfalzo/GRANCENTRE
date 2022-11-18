@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         CardView restaurantes = findViewById(R.id.crest);
         restaurantes.setOnClickListener(this);
         CardView negocios = findViewById(R.id.cfinanzas);
