@@ -16,7 +16,6 @@
             android:id="@+id/tabtiendas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/tiendas"
             android:text="TIENDAS">
 
         </com.google.android.material.tabs.TabItem>
@@ -25,14 +24,12 @@
             android:id="@+id/tabautomoviles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/automovil"
             android:text="AUTOMOVILES" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabsupermercados"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/supermercado"
             android:text="SUPERMERCADOS" />
     </com.google.android.material.tabs.TabLayout>
 
