@@ -29,7 +29,8 @@
             android:layout_height="wrap_content"
             android:text="Descripcion:"
             android:layout_toRightOf="@+id/img1"
-            android:layout_below="@id/hotelname"/>
+            android:layout_below="@id/hotelname"
+            android:layout_marginBottom="5dp"/>
         <RatingBar
             android:id="@+id/hotelrating"
             android:layout_width="wrap_content"
@@ -43,12 +44,6 @@
             android:max="5"
             android:layout_below="@id/hoteldescription"
             android:layout_toRightOf="@id/img1"/>
-        <Button
-            android:id="@+id/hoteldetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Detalles"
-            android:layout_below="@+id/hotelrating"
-            android:layout_toRightOf="@+id/img1"/>
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

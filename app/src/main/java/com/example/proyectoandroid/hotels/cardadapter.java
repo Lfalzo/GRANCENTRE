@@ -23,6 +23,11 @@ import java.util.List;
 public class cardadapter extends RecyclerView.Adapter<cardadapter.ViewHolder> {
     private Context hotelContext;
     private List<hotelData> hotelDataList;
+    private OnItemClickListener myListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(View v,int position);
+    }
 
     public cardadapter (ArrayList<hotelData> list) {
         this.hotelDataList = list;
@@ -42,7 +47,6 @@ public class cardadapter extends RecyclerView.Adapter<cardadapter.ViewHolder> {
         //holder.himage.setImageResource();
         holder.hdescription.setText(actual.getDescripcion());
         holder.hrating.setRating(actual.getValoracion());
-        //falta el click del details
         new unaEstrella();
     }
 
@@ -51,22 +55,30 @@ public class cardadapter extends RecyclerView.Adapter<cardadapter.ViewHolder> {
         return hotelDataList.size();
     }
 
+    public void setOnItemClickListener (OnItemClickListener onItemClick){
+        this.myListener = onItemClick;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView himage;
         public TextView hname;
         public TextView hdescription;
         public RatingBar hrating;
-        public Button hdetails;
 
 
-        public ViewHolder(@NonNull View itemView) {
+        public  ViewHolder(@NonNull View itemView) {
             super(itemView);
             himage = itemView.findViewById(R.id.img1);
             hname = itemView.findViewById(R.id.hotelname);
             hdescription = itemView.findViewById(R.id.hoteldescription);
             hrating = itemView.findViewById(R.id.hotelrating);
-            hdetails = itemView.findViewById(R.id.hoteldetails);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick (View view){
+                    myListener.onItemClick(view,getAdapterPosition());
+                }
+            });
         }
     }
 }

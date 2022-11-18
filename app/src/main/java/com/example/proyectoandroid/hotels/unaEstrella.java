@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +30,10 @@ import java.util.List;
  * Use the {@link unaEstrella#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class unaEstrella extends Fragment implements View.OnClickListener{
+public class unaEstrella extends Fragment implements View.OnClickListener,cardadapter.OnItemClickListener{
     private RecyclerView hlista;
     private cardadapter adapter;
-    private List<hotelData> dataHotels = new ArrayList<hotelData>();
+    private ArrayList<hotelData> dataHotels = new ArrayList<hotelData>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,7 +77,7 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
 
     public void readJSON(){
         String jsonString = loadJSONFromAsset();
-
+        dataHotels = new ArrayList<>();
         try {
             JSONArray data = new JSONArray(jsonString);
             String result = "";
@@ -135,28 +136,11 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
 
         initValues();
 
-        //Button detalls = view.findViewById(R.id.hoteldetails);
-        //detalls.setOnClickListener(this);
-
         return view;
     }
 
     @Override
     public void onClick(View view) {
-        Button bt = (Button) view;
-
-        if (bt.getId() == R.id.hoteldetails){
-            //s'hauran de passar els parametres del JSON
-            Intent popup =new Intent(getActivity().getApplicationContext(), popup_hotel.class);
-
-            //afegir les dades del Json //popup.putExtra(Bundle);
-
-            startActivity(popup);
-        }
-    }
-
-    private void initViews (){
-
     }
 
     private void initValues(){
@@ -164,5 +148,31 @@ public class unaEstrella extends Fragment implements View.OnClickListener{
         hlista.setLayoutManager(manager);
 
         adapter = new cardadapter((ArrayList<hotelData>) dataHotels);
+        adapter.setOnItemClickListener(this);
+        hlista.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(View v, int position) {
+        Intent popup =new Intent(getActivity().getApplicationContext(), popup_hotel.class);
+
+        String nom = dataHotels.get(position).getNombre();
+        String email = dataHotels.get(position).getEmail();
+        String telefon = dataHotels.get(position).getTelefono();
+        String website = dataHotels.get(position).getWebsite();
+        String imatge2 = dataHotels.get(position).getImatge2();
+        String direccio = dataHotels.get(position).getDireccion();
+
+
+        Bundle extras = new Bundle();
+        extras.putString("nomHotel",nom);
+        extras.putString("email",email);
+        extras.putString("telefon",telefon);
+        extras.putString("website",website);
+        extras.putString("imatge",imatge2);
+        extras.putString("direccio",direccio);
+
+        popup.putExtras(extras);
+        startActivity(popup);
     }
 }

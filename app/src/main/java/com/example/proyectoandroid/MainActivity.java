@@ -35,12 +35,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         CardView c = (CardView) view;
 
-        if (c.getId() == R.id.gcrest)
+        if (c.getId() == R.id.crest)
         {
             Intent rest =new Intent(this, activity_hotels.class);
             startActivity(rest);
         }
-        else if (c.getId() == R.id.gcnegocios)
+        else if (c.getId() == R.id.cfinanzas)
         {
             Intent negocios =new Intent(this, activity_negocios.class);
             startActivity(negocios);
@@ -50,22 +50,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent hotels =new Intent(this, activity_hotels.class);
             startActivity(hotels);
         }
-        else if (c.getId() == R.id.gccine)
+        else if (c.getId() == R.id.ccine)
         {
             Intent cartelera =new Intent(this, activity_cartelera.class);
             startActivity(cartelera);
         }
-        else if (c.getId() == R.id.gcparking)
+        else if (c.getId() == R.id.cparking)
         {
             Intent parking =new Intent(this, activity_hotels.class);
             startActivity(parking);
         }
-        else if (c.getId() == R.id.gctransporte)
+        else if (c.getId() == R.id.ctransporte)
         {
             Intent transporte =new Intent(this, activity_transportes.class);
             startActivity(transporte);
         }
-        else if (c.getId() == R.id.gcconfig)
+        else if (c.getId() == R.id.cconfig)
         {
             Intent config =new Intent(this, config.class);
             startActivity(config);
