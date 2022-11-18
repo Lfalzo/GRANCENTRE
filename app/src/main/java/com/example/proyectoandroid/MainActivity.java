@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent rest =new Intent(this, activity_hotels.class);
             startActivity(rest);
         }
-        else if (b.getId() == R.id.gcfinanzas)
+        else if (b.getId() == R.id.gcnegocios)
         {
-            Intent finanzas =new Intent(this, activity_negocios.class);
-            startActivity(finanzas);
+            Intent negocios =new Intent(this, activity_negocios.class);
+            startActivity(negocios);
         }
         else if (c.getId() == R.id.chotel)
         {
