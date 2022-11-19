@@ -1,0 +1,26 @@
+[
+    {
+        "nombreCine": "OCINE Granollers",
+        "peli1" : "https://ocinegranollers.es/images/pelicules/4752.jpg",
+        "peli2" : "https://ocinegranollers.es/images/pelicules/4609.jpg",
+        "peli3" : "https://ocinegranollers.es/images/pelicules/4709.jpg",
+        "direccion" : "Centre Comercial El Nord, Carrer Montseny, 4, 08400 Granollers, Barcelona",
+        "website" : "https://ocinegranollers.es/"
+    },
+    {
+        "nombreCine": "Cinesa Diagonal",
+        "peli1" : "https://www.grupbalana.com/content/imgsxml/cartelera/big-the-woman-king-829524630-large688.jpg",
+        "peli2" : "https://www.ecartelera.com/carteles/15600/15696/002_m.jpg",
+        "peli3" : "https://www.ecartelera.com/carteles/17300/17313/002_m.jpg",
+        "direccion" : "Carrer de Santa Fe de Nou Mèxic, s/n, 08021 Barcelona",
+        "website" : "https://www.cinesa.es/Cines/Diagonal/"
+    },
+    {
+        "nombreCine": "OCINE Blanes",
+        "peli1" : "https://www.ocineblanes.es/images/pelicules/4704.jpg",
+        "peli2" : "https://www.ocineblanes.es/images/pelicules/4568.jpg",
+        "peli3" : "https://www.ocineblanes.es/images/pelicules/4643.jpg",
+        "direccion" : "Carrer ses Falques, 10, 17300 Blanes, Girona",
+        "website" : "https://www.ocineblanes.es/"
+    }
+]

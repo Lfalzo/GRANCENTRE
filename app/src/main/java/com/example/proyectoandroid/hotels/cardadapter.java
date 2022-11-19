@@ -1,6 +1,7 @@
 package com.example.proyectoandroid.hotels;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.proyectoandroid.R;
 
 import org.w3c.dom.Text;
@@ -44,7 +46,7 @@ public class cardadapter extends RecyclerView.Adapter<cardadapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         hotelData actual = hotelDataList.get(position);
         holder.hname.setText(actual.getNombre());
-        //holder.himage.setImageResource();
+        Glide.with(hotelContext).load(actual.getImatge()).into(holder.himage);
         holder.hdescription.setText(actual.getDescripcion());
         holder.hrating.setRating(actual.getValoracion());
         new unaEstrella();
@@ -69,6 +71,7 @@ public class cardadapter extends RecyclerView.Adapter<cardadapter.ViewHolder> {
 
         public  ViewHolder(@NonNull View itemView) {
             super(itemView);
+            hotelContext = itemView.getContext();
             himage = itemView.findViewById(R.id.img1);
             hname = itemView.findViewById(R.id.hotelname);
             hdescription = itemView.findViewById(R.id.hoteldescription);

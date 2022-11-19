@@ -1,4 +1,4 @@
-package com.example.proyectoandroid.hotels;
+package com.example.proyectoandroid.cartelera;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.proyectoandroid.R;
+import com.example.proyectoandroid.hotels.cardadapter;
+import com.example.proyectoandroid.hotels.hotelData;
+import com.example.proyectoandroid.hotels.popup_hotel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,14 +26,13 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link duesEstrelles#newInstance} factory method to
+ * Use the {@link cartelera#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class duesEstrelles extends Fragment implements View.OnClickListener,cardadapter.OnItemClickListener {
-    private RecyclerView hlista;
-    private cardadapter adapter;
-    private ArrayList<hotelData> dataHotels = new ArrayList<hotelData>();
-
+public class cartelera extends Fragment implements View.OnClickListener, carteleraAdapter.OnItemClickListener{
+    private RecyclerView clista;
+    private carteleraAdapter adapter;
+    private ArrayList<filmData> dataCinemas = new ArrayList<filmData>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -40,7 +42,7 @@ public class duesEstrelles extends Fragment implements View.OnClickListener,card
     private String mParam1;
     private String mParam2;
 
-    public duesEstrelles() {
+    public cartelera() {
         // Required empty public constructor
     }
 
@@ -50,11 +52,11 @@ public class duesEstrelles extends Fragment implements View.OnClickListener,card
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment duesEstrelles.
+     * @return A new instance of fragment cartelera.
      */
     // TODO: Rename and change types and number of parameters
-    public static duesEstrelles newInstance(String param1, String param2) {
-        duesEstrelles fragment = new duesEstrelles();
+    public static cartelera newInstance(String param1, String param2) {
+        cartelera fragment = new cartelera();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,33 +72,25 @@ public class duesEstrelles extends Fragment implements View.OnClickListener,card
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
     public void readJSON(){
         String jsonString = loadJSONFromAsset();
-        dataHotels = new ArrayList<>();
+        dataCinemas = new ArrayList<>();
         try {
             JSONArray data = new JSONArray(jsonString);
             String result = "";
             for (int i=0;i< data.length(); i++)
             {
-                JSONObject h = data.getJSONObject(i);
-                if (h.getInt("estrellas")==2) {
-                    hotelData hotel = new hotelData(
-                            h.getString("nombre"),
-                            h.getInt("estrellas"),
-                            h.getString("descripcion"),
-                            h.getString("imatge"),
-                            h.getString("imatge2"),
-                            h.getString("direccion"),
-                            h.getString("telefono"),
-                            h.getString("email"),
-                            h.getInt("valoracion"),
-                            h.getString("website"));
-
+                JSONObject c = data.getJSONObject(i);
+                    filmData cinema = new filmData(
+                            c.getString("nombreCine"),
+                            c.getString("peli1"),
+                            c.getString("peli2"),
+                            c.getString("peli3"),
+                            c.getString("direccion"),
+                            c.getString("website"));
                     //make an array with the classes hotelData
-                    dataHotels.add(hotel);
+                    dataCinemas.add(cinema);
                 };
-            };
         } catch (JSONException jsonException) {
             jsonException.printStackTrace();
         }
@@ -106,7 +100,7 @@ public class duesEstrelles extends Fragment implements View.OnClickListener,card
     private String loadJSONFromAsset() {
         String json = null;
         try {
-            InputStream is = getActivity().getAssets().open("hotels.json");
+            InputStream is = getActivity().getAssets().open("pelis.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -119,16 +113,15 @@ public class duesEstrelles extends Fragment implements View.OnClickListener,card
         return json;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_dues_estrelles, container, false);
+        View view = inflater.inflate(R.layout.fragment_cartelera, container, false);
 
         readJSON();
 
-        hlista = view.findViewById(R.id.hotelsList1);
+        clista = view.findViewById(R.id.filmsList);
 
         initValues();
 
@@ -141,31 +134,25 @@ public class duesEstrelles extends Fragment implements View.OnClickListener,card
 
     private void initValues(){
         LinearLayoutManager manager = new LinearLayoutManager(getActivity().getApplicationContext());
-        hlista.setLayoutManager(manager);
+        clista.setLayoutManager(manager);
 
-        adapter = new cardadapter((ArrayList<hotelData>) dataHotels);
+        adapter = new carteleraAdapter((ArrayList<filmData>) dataCinemas);
         adapter.setOnItemClickListener(this);
-        hlista.setAdapter(adapter);
+        clista.setAdapter(adapter);
     }
 
     @Override
     public void onItemClick(View v, int position) {
-        Intent popup =new Intent(getActivity().getApplicationContext(), popup_hotel.class);
+        Intent popup =new Intent(getActivity().getApplicationContext(), popup_cartelera.class);
 
-        String nom = dataHotels.get(position).getNombre();
-        String email = dataHotels.get(position).getEmail();
-        String telefon = dataHotels.get(position).getTelefono();
-        String website = dataHotels.get(position).getWebsite();
-        String imatge2 = dataHotels.get(position).getImatge2();
-        String direccio = dataHotels.get(position).getDireccion();
+        String nom = dataCinemas.get(position).getNombreCine();
+        String website = dataCinemas.get(position).getWebsite();
+        String direccio = dataCinemas.get(position).getDireccion();
 
 
         Bundle extras = new Bundle();
-        extras.putString("nomHotel",nom);
-        extras.putString("email",email);
-        extras.putString("telefon",telefon);
+        extras.putString("nomCine",nom);
         extras.putString("website",website);
-        extras.putString("imatge",imatge2);
         extras.putString("direccio",direccio);
 
         popup.putExtras(extras);

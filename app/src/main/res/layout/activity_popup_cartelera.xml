@@ -6,18 +6,12 @@
     android:orientation="vertical"
     android:layout_margin="10dp">
     <TextView
-        android:id="@+id/nomHotel"
+        android:id="@+id/nomCine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="nom"
         style="@style/TitleHotel"/>
-    <ImageView
-        android:id="@+id/img2"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginVertical="10dp"
-        android:layout_gravity="center"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,11 +19,12 @@
         android:text="Dirección:"
         android:textStyle="bold"/>
     <TextView
-        android:id="@+id/direction"
+        android:id="@+id/directionCine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="direccio"/>
+        android:text="direccio"
+        android:layout_marginVertical="5dp"/>
     <TextView
         android:id="@+id/descriptionPopUp"
         android:layout_width="match_parent"
@@ -37,7 +32,7 @@
         android:textAlignment="center"
         android:layout_marginTop="10dp"
         android:textStyle="italic"
-        android:text="Estaremos encantados de ayudarte, puedes contactarnos a través de los siguientes canales:"/>
+        android:text="@string/info_hotel"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -45,18 +40,7 @@
         android:gravity="center"
         android:layout_marginTop="20dp">
         <ImageButton
-            android:id="@+id/email"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/correo"/>
-        <ImageButton
-            android:id="@+id/call"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/llamada"
-            android:layout_marginHorizontal="25px"/>
-        <ImageButton
-            android:id="@+id/website"
+            android:id="@+id/websiteCine"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/sitioweb"/>

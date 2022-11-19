@@ -1,8 +1,11 @@
 package com.example.proyectoandroid.hotels;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +13,23 @@ import android.view.ViewGroup;
 
 import com.example.proyectoandroid.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link quatreEstrelles#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class quatreEstrelles extends Fragment {
+public class quatreEstrelles extends Fragment implements View.OnClickListener,cardadapter.OnItemClickListener{
+    private RecyclerView hlista;
+    private cardadapter adapter;
+    private ArrayList<hotelData> dataHotels = new ArrayList<hotelData>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,10 +71,103 @@ public class quatreEstrelles extends Fragment {
         }
     }
 
+    public void readJSON(){
+        String jsonString = loadJSONFromAsset();
+        dataHotels = new ArrayList<>();
+        try {
+            JSONArray data = new JSONArray(jsonString);
+            String result = "";
+            for (int i=0;i< data.length(); i++)
+            {
+                JSONObject h = data.getJSONObject(i);
+                if (h.getInt("estrellas")==4) {
+                    hotelData hotel = new hotelData(
+                            h.getString("nombre"),
+                            h.getInt("estrellas"),
+                            h.getString("descripcion"),
+                            h.getString("imatge"),
+                            h.getString("imatge2"),
+                            h.getString("direccion"),
+                            h.getString("telefono"),
+                            h.getString("email"),
+                            h.getInt("valoracion"),
+                            h.getString("website"));
+
+                    //make an array with the classes hotelData
+                    dataHotels.add(hotel);
+                };
+            };
+        } catch (JSONException jsonException) {
+            jsonException.printStackTrace();
+        }
+
+    }
+
+    private String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getActivity().getAssets().open("hotels.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quatre_estrelles, container, false);
+        View view = inflater.inflate(R.layout.fragment_quatre_estrelles, container, false);
+
+        readJSON();
+
+        hlista = view.findViewById(R.id.hotelsList1);
+
+        initValues();
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+    }
+
+    private void initValues(){
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity().getApplicationContext());
+        hlista.setLayoutManager(manager);
+
+        adapter = new cardadapter((ArrayList<hotelData>) dataHotels);
+        adapter.setOnItemClickListener(this);
+        hlista.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(View v, int position) {
+        Intent popup =new Intent(getActivity().getApplicationContext(), popup_hotel.class);
+
+        String nom = dataHotels.get(position).getNombre();
+        String email = dataHotels.get(position).getEmail();
+        String telefon = dataHotels.get(position).getTelefono();
+        String website = dataHotels.get(position).getWebsite();
+        String imatge2 = dataHotels.get(position).getImatge2();
+        String direccio = dataHotels.get(position).getDireccion();
+
+
+        Bundle extras = new Bundle();
+        extras.putString("nomHotel",nom);
+        extras.putString("email",email);
+        extras.putString("telefon",telefon);
+        extras.putString("website",website);
+        extras.putString("imatge",imatge2);
+        extras.putString("direccio",direccio);
+
+        popup.putExtras(extras);
+        startActivity(popup);
     }
 }
